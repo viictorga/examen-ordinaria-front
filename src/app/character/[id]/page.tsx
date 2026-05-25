@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { api } from "@/lib/api"
 
-
+import "./page.css"
 const paginaPersonaje= () =>{
     const {id} = useParams()
     const idNew = String(id)
@@ -29,10 +29,10 @@ const paginaPersonaje= () =>{
       
      },[id])
     return(
-    <div>
+  
         <div className="todoDeCadaPJ">
         
-            <div className="info"></div>
+            <div className="info">
             <h1>Nombre: {personajeOficial?.name} </h1>
             <h2>Especie:{personajeOficial?.gender} </h2>
             <h2>Status: {personajeOficial?.status}</h2>
@@ -41,9 +41,10 @@ const paginaPersonaje= () =>{
             <h2>Origen:{personajeOficial?.origin.name} </h2>
             <h2>Especie:{personajeOficial?.location.name} </h2>
             <button onClick={router.back}> ATRAS </button>
-           
             </div>
-    </div>
+           
+        </div>
+  
     )
     
 }

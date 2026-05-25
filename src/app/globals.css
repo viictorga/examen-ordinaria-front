@@ -4,13 +4,93 @@ body{
   width: 100%;
   min-height: 100vh;
   background-color: #fabada;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
 .generalAsiGuapo{
+  width: 100%;
+  min-height: 100vh;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  padding: 30px;
+  box-sizing: border-box;
 }
+
 .componentesChulos{
+  width: 90%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 20px;
+
+  padding: 20px;
+
+  background-color: grey;
+  border-radius: 20px;
+}
+
+.personajesCartas{
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 25px;
+}
+
+.personajesCartas > *{
+
+  width: 70%;
+
+  display: flex;
+
+  justify-content: center;
 
 }
-.personajesCartas{
-  
+
+.personajesCartas img{
+  width: 200px;
+  border-radius: 20px;
+}
+
+button{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+input{
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.numero{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.general{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  margin-bottom: 30px;
 }

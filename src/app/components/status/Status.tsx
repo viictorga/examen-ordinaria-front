@@ -1,5 +1,5 @@
 "use client"
-
+import "./page.css"
 type Props = {
     estadito:string
     setEstado:React.Dispatch<React.SetStateAction<string>>
@@ -8,7 +8,7 @@ type Props = {
 export const EstadoGuapo = ({estadito,setEstado}:Props)=>{
 
     return(
-        <div>
+        <div className="EstadoDiv">
         <button onClick={()=>{
             if(estadito === "dead"){
                 setEstado("alive")

@@ -5,38 +5,43 @@ import "./page.css"
 type Props ={
     page:number,
     totalPages:number,
-    setPage:(page:number)=>void
+    setPage:(page:number)=>void,
+    prev:boolean,
+    next:boolean
 }
 
 export const FuncionPaginacion = ({
     page,
     totalPages,
-    setPage
+    setPage,
+    prev,
+    next
 }:Props)=>{
-
-    const primeras = [1,2,3]
-
-    const ultimas = [
-        totalPages - 2,
-        totalPages - 1,
-        totalPages
-    ]
 
     const paginas = [
 
-        ...primeras,
+        // PRIMERAS
+        1,
+        2,
+        3,
 
-        // SOLO mete la actual
-        // si no está ya en primeras o últimas
-        ...( !primeras.includes(page) &&
-            !ultimas.includes(page)
+        // PAGINA ACTUAL SOLO
+        // SI NO ESTA YA
+        ...(page > 3 && page < totalPages - 2
             ? [page]
             : []
         ),
 
-        ...ultimas
+        // ULTIMAS
+        totalPages - 2,
+        totalPages - 1,
+        totalPages
 
-    ].filter((e)=> e > 0 && e <= totalPages)
+    ]
+
+    .filter((e)=> e > 0 && e <= totalPages)
+
+    const paginasFiltradas = [...new Set(paginas)]
 
     return(
 
@@ -47,7 +52,7 @@ export const FuncionPaginacion = ({
                 <button
                     onClick={()=>{
 
-                        if(page > 1){
+                        if(prev){
                             setPage(page - 1)
                         }
 
@@ -61,8 +66,20 @@ export const FuncionPaginacion = ({
             <div className="numero">
 
                 {
-                    paginas.map((e)=>{
+                    paginasFiltradas.map((e)=>{
 
+                        // PAGINA ACTUAL
+                        if(e === page){
+
+                            return(
+                                <p key={e}>
+                                    {e}
+                                </p>
+                            )
+
+                        }
+
+                        // RESTO
                         return(
 
                             <button
@@ -87,7 +104,7 @@ export const FuncionPaginacion = ({
                 <button
                     onClick={()=>{
 
-                        if(page < totalPages){
+                        if(next){
                             setPage(page + 1)
                         }
 

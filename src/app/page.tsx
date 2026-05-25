@@ -11,8 +11,8 @@ import { FuncionPaginacion } from "./components/Paginador/paginador";
 
 const  Home = () =>{
   const [search, setSearch] = useState<string>("")
-  const [estado, setEstado] = useState<string>("")
-  const [genero, setGenero] = useState<string>("")
+  const [estado, setEstado] = useState<string>("Alive")
+  const [genero, setGenero] = useState<string>("Male")
   const  [personajes, setPersonajes] = useState<Character[]>([])
     const [loading,setLoading] = useState<boolean>(true)
   const [error,setError] = useState<string>("")
@@ -49,11 +49,11 @@ const  Home = () =>{
         <EstadoGuapo estadito={estado} setEstado={setEstado}/>
       </div>
       <div className="personajesCartas">
-        {personajes && personajes.map((e)=>{
+        {personajes.length >0 ? personajes.map((e)=>{
           return <CartaGuapa key={e.id} personaje={e}></CartaGuapa>
-        })}
+        }): <p>No hay resultados</p>}
       </div>
-      <FuncionPaginacion page={page} setPage={setPage} totalPages={totalPaginas} ></FuncionPaginacion>
+      {personajes.length >0 &&<FuncionPaginacion page={page} setPage={setPage} totalPages={totalPaginas} prev={prev} next={next} ></FuncionPaginacion>}
       
     </div>
   );

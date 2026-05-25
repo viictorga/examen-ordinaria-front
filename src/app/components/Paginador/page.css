@@ -9,7 +9,7 @@
     transition: transform 1s;
     cursor: pointer;
     width: 30px;
-    height: 20px;
+    height: 30px;
     
 }
 .izq button:hover{
@@ -19,8 +19,23 @@
     transition: transform 1s;
     cursor: pointer;
     width: 30px;
-    height: 20px;
+    height: 30px;
 }
 .der button:hover{
     transform: scale(1.2);
+}
+.numero{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.general{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  margin-bottom: 30px;
 }

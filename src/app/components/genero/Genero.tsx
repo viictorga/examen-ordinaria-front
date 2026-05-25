@@ -1,5 +1,5 @@
 "use client"
-
+import "./page.css"
 type Props = {
     genero:string
     setGenero:React.Dispatch<React.SetStateAction<string>>
@@ -8,7 +8,7 @@ type Props = {
 export const GeneroChulo = ({genero,setGenero}:Props)=>{
 
     return(
-        <div>
+        <div className="EstadoDiv">
             <button onClick={()=>{
             if(genero === "Female"){
                  setGenero("Male")
