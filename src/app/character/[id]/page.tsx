@@ -10,13 +10,14 @@ import { api } from "@/lib/api"
 
 const paginaPersonaje= () =>{
     const {id} = useParams()
+    const idNew = String(id)
       const [error,setError] = useState<string>("")
       const [personajeOficial,setPersonajeOficial]= useState<Character|null>(null)
       const router = useRouter()
       
     useEffect(()=>{
        if(id){
-            api.get(`/character/${id}`).then((e)=>{
+            api.get(`/character/${idNew}`).then((e)=>{
                setPersonajeOficial(e.data)
            })
            .catch((e)=>{

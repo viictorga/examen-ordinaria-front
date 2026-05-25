@@ -7,6 +7,7 @@ import { CartaGuapa } from "./components/cardCharacter/cardCharacter";
 import { EstadoGuapo } from "./components/status/Status";
 import { Buscador } from "./components/buscador/Buscador";
 import { GeneroChulo } from "./components/genero/Genero";
+import { FuncionPaginacion } from "./components/Paginador/paginador";
 
 const  Home = () =>{
   const [search, setSearch] = useState<string>("")
@@ -16,13 +17,18 @@ const  Home = () =>{
     const [loading,setLoading] = useState<boolean>(true)
   const [error,setError] = useState<string>("")
   const [page, setPage] = useState<number>(1)
+    const [prev,setPrev]=useState<boolean>(true)
+  const [next,setNext]=useState<boolean>(true)
+    const [totalPaginas,setTotalPaginas]=useState<number>(0)
+
  
  useEffect(()=>{
     const llamada = api.get(`/character/?name=${search}&gender=${genero}&status=${estado}&page=${page}`)
     llamada.then((e)=>{
       setPersonajes(e.data.results)
-      
-      
+      setPrev(e.data.info.prev)
+      setNext(e.data.info.next)
+      setTotalPaginas(e.data.info.pages)
     })
     .catch((e)=>{
         setError(e.message)
@@ -47,7 +53,7 @@ const  Home = () =>{
           return <CartaGuapa key={e.id} personaje={e}></CartaGuapa>
         })}
       </div>
-
+      <FuncionPaginacion page={page} setPage={setPage} totalPages={totalPaginas} ></FuncionPaginacion>
       
     </div>
   );
