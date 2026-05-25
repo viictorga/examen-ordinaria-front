@@ -10,113 +10,50 @@ type Props ={
     next:boolean
 }
 
-export const FuncionPaginacion = ({
-    page,
-    totalPages,
-    setPage,
-    prev,
-    next
-}:Props)=>{
+export const FuncionPaginacion = ({page,totalPages,setPage,prev,next}:Props)=>{
 
     const paginas = [
-
-        // PRIMERAS
         1,
         2,
         3,
-
-        // PAGINA ACTUAL SOLO
-        // SI NO ESTA YA
-        ...(page > 3 && page < totalPages - 2
-            ? [page]
-            : []
-        ),
-
-        // ULTIMAS
+        ...(page > 3 && page < totalPages - 2 ? [page]: []),
         totalPages - 2,
         totalPages - 1,
         totalPages
 
-    ]
+    ].filter((e)=> e > 0 && e <= totalPages)
 
-    .filter((e)=> e > 0 && e <= totalPages)
-
-    const paginasFiltradas = [...new Set(paginas)]
+    const paginasFiltradas = [...new Set(paginas)] // que guapo esto del set pensaba que era solo de c++
 
     return(
-
         <div className="general">
-
             <div className="izq">
-
-                <button
-                    onClick={()=>{
-
-                        if(prev){
-                            setPage(page - 1)
-                        }
-
-                    }}
-                >
-                    ⬅
-                </button>
-
+                <button onClick={()=>{
+                    if(prev){
+                    setPage(page - 1)
+                    }
+                }}>{"<"}</button>
             </div> 
-
             <div className="numero">
-
-                {
-                    paginasFiltradas.map((e)=>{
-
-                        // PAGINA ACTUAL
-                        if(e === page){
-
-                            return(
-                                <p key={e}>
-                                    {e}
-                                </p>
-                            )
-
-                        }
-
-                        // RESTO
+                {paginasFiltradas.map((e)=>{
+                    if(e === page){
                         return(
-
-                            <button
-                                key={e}
-
-                                onClick={()=>{
-                                    setPage(e)
-                                }}
-                            >
-                                {e}
-                            </button>
-
-                        )
-
+                            <p key={e}>{e}</p>)
+                        }
+                    return(
+                        <button key={e}onClick={()=>{setPage(e)}}>{e}</button>
+                    )
                     })
                 }
-
             </div>
-
             <div className="der">
-
-                <button
-                    onClick={()=>{
-
-                        if(next){
-                            setPage(page + 1)
-                        }
-
-                    }}
-                >
-                    ⮕
-                </button>
-
+                <button onClick={()=>{
+                    if(next){
+                        setPage(page + 1)
+                    }
+                }}>{">"}</button>
             </div>
-       
         </div>
-
     )
 
 }

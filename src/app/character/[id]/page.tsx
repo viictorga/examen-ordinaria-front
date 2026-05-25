@@ -29,7 +29,6 @@ const paginaPersonaje= () =>{
       
      },[id])
     return(
-  
         <div className="todoDeCadaPJ">
         
             <div className="info">

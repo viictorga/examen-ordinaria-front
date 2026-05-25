@@ -3,11 +3,8 @@
     flex-direction: row;
     align-items: center;
     gap: 20px;
-
     background-color: grey;
-
-    padding: 15px 25px;
-
+    padding: 15px 25px; 
     border-radius: 20px;
 }
 .EstadoDiv p{
@@ -20,19 +17,14 @@
 .EstadoDiv button{
     color: black;
     margin: 0;
-    
     background-color: #fabada;
-
     padding: 10px 20px;
-
     border-radius: 10px;
-
     cursor: pointer;
-
     transition: 0.3s;
 }
 
 .EstadoDiv button:hover{
-    transform: scale(1.05);
+    transform: scale(1.1);
     background-color: white;
 }
